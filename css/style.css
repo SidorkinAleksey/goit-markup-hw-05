@@ -89,10 +89,7 @@ img {
 .site-nav {
   display: flex;
 }
-.site-nav-link:hover,
-.site-nav-link:focus {
-  color: var(--accent-color);
-}
+
 .site-nav-item {
   margin-right: 50px;
 }
@@ -101,14 +98,33 @@ img {
 }
 
 .site-nav-link {
-  padding: 32px 0;
+  position: relative;
+
+  padding-top: 32px;
+  padding-bottom: 32px;
 
   color: var(--secondary-text-color);
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.site-nav-link.current {
+.site-nav-link:hover,
+.site-nav-link:focus {
+  color: var(--accent-color);
+}
+.site-nav-link.current::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  right: 0;
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--accent-color);
+}
+.site-nav-link.action {
   color: var(--accent-color);
 }
 
@@ -135,6 +151,7 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--main-text-color);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .mail-icon:hover,
 .mail-icon:focus {
@@ -189,7 +206,7 @@ img {
   margin-right: auto;
 }
 
-button {
+.button {
   cursor: pointer;
 }
 
@@ -207,10 +224,33 @@ button {
   padding: 10px 32px;
   align-items: center;
   min-width: auto;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button:hover,
 .button:focus {
   background-color: var(--accent-color);
+}
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(120, 86%, 49%, 0.5);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 400px;
+  min-height: 600px;
+  transform: translate(-50%, -50%);
+  background: color #000;
 }
 
 /*CONTAINER  SECTION */
@@ -334,6 +374,7 @@ button {
   height: 44px;
   color: #afb1b8;
   border-radius: 50%;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-link:hover,
 .social-link:focus {
@@ -374,6 +415,7 @@ button {
   border: 1px solid var(--icon-client-cl);
   color: var(--icon-client-cl);
   border-radius: 4px;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .clientc-link:hover,
 .clientc-link:focus {
@@ -411,6 +453,7 @@ button {
 }
 .footer-contacts-link {
   color: rgba(255, 255, 255, 0.6);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-contacts-item {
   margin-bottom: 9px;
@@ -449,6 +492,7 @@ button {
   color: var(--white-text-color);
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-link:hover,
 .footer-link:focus {
@@ -489,6 +533,7 @@ button {
   border-radius: 4px;
   border: 0px;
   padding: 6px 22px;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button-list:hover,
 .button-list:focus {
@@ -512,6 +557,41 @@ button {
   color: var(--secondary-text-color);
   margin-bottom: 4px;
 }
+.web-item {
+  position: relative;
+}
+.information {
+  position: relative;
+  overflow: hidden;
+}
+.information-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 63px 24px;
+  display: flex;
+  transform: translateY(100%);
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(33, 150, 243, 0.9);
+
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.web-item:hover .information-thumb,
+.web-item:focus .information-thumb {
+  transform: translateY(0);
+}
+
+.information-text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 0.03em;
+  color: var(--border-card-cl);
+}
 
 .web-box {
   border-left: 1px solid #ececec;
@@ -523,6 +603,7 @@ button {
   display: block;
   text-decoration: none;
   color: var(--main-text-color);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .web-link:hover,
 .web-link:focus {
